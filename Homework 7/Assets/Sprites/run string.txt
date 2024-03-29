@@ -1,0 +1,5 @@
+Assets/Sprites/Run_000.png
+Assets/Sprites/Run_002.png
+Assets/Sprites/Run_004.png
+Assets/Sprites/Run_006.png
+Assets/Sprites/Run_008.png
