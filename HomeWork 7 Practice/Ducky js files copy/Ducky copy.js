@@ -24,6 +24,7 @@ var attackAnimation = [];
 var attack = [];
 var a = 0; //attack animation var
 var b = 0; //attack UPDATE animation var
+var isAttacking = false;
 
 //tub stuff
 var tubObject;
@@ -55,6 +56,7 @@ function preload()
 {
     idlePaths = loadStrings("Assets/Ducky Images/idle copy.txt");
     attackPaths = loadStrings("Assets/Ducky Images/attack.txt");
+    
 
     //background image
     backgroundTile = loadImage('Assets/Ducky Images/BathroomTile copy.jpg');
@@ -65,6 +67,7 @@ function preload()
     duckySideRight = loadImage('Assets/Ducky Images/DuckySideRight copy.png')
 
     duckyAttack = loadImage('Assets/Ducky Images/Devil Duck.png')
+    duckyAttackFlipped = loadImage('Assets/Ducky Images/Devil Duck Flipped.png')
     
     // loofah images
     loofahPink = loadImage('Assets/Ducky Images/Loofahs/loofah pink copy.png');
@@ -79,6 +82,9 @@ function preload()
     backgroundSound = loadSound('Assets/Ducky Sounds/Background Music copy.wav');
     chompSound = loadSound('Assets/Ducky Sounds/Chomp copy.wav');
 }
+
+
+
 
 function setup()
 {
@@ -255,8 +261,23 @@ function draw()
    
 
     //duck shapes
-    animations[i].updatePosition(duckyX, duckyY);
+    //animations[i].updatePosition(duckyX, duckyY);
     animations[i].drawAnimation();
+
+    if (isAttacking) 
+    {
+        attack[a].updatePosition(duckyX, duckyY);
+        attack[a].drawAnimation();
+        // Increment animation index if necessary
+        a++;
+        if (a >= attack.length) {
+            a = 0;
+        }
+        // Reset flag
+        isAttacking = false;
+    }
+
+    
 
 
     //timer
@@ -327,9 +348,11 @@ function keyPressed()
         duckyX += 10;
     }
 
-    if(keyCode == 'x')
+    if(key == 'x')
     {
-        attack[a].drawAnimation();
+        //attack[a].drawAnimation();
+        isAttacking = true;
+        
     }
 
     for(var j = 0; j < animations.length; j++)
