@@ -8,7 +8,7 @@ var duckyY = 400;
 
 // ducky idle
 var idlePaths = [];
-var i = 0; //ducky animation var
+var i = 0; //ducky idle animation var
 var j = 0; //ducky UPDATE animation var
 
 //duck attack vars
@@ -71,8 +71,8 @@ function preload()
     
     // loofah images
     loofahPink = loadImage('Assets/Ducky Images/Loofahs/loofah pink copy.png');
-    loofahGreen = loadImage('Assets/Ducky Images/Loofahs/loofah green copy.png');
-    loofahPurple = loadImage('Assets/Ducky Images/Loofahs/loofah purple copy.png')
+    //loofahGreen = loadImage('Assets/Ducky Images/Loofahs/loofah green copy.png');
+    //loofahPurple = loadImage('Assets/Ducky Images/Loofahs/loofah purple copy.png')
     
     // font
     duckyFonts = loadFont('Assets/Ducky Font/Copyduck copy.otf');
@@ -117,7 +117,7 @@ function setup()
     //attack duck
     for(var i = 0; i < attackPaths.length; i++)
     {   
-    myAnimation = new animationImages(attackPaths[i],200,300);
+    myAnimation = new animationImages(attackPaths[i],600,600);
     attackAnimations[i] = myAnimation;
     }
     
