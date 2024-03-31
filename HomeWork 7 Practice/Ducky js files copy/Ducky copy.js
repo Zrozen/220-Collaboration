@@ -1,33 +1,29 @@
-//ducky idle animation
+//ducky animation
 var myAnimation = [];
 var animations = [];
+
+//ducky movement/animation vars
+var duckyX = 400;
+var duckyY = 400;
+
+// ducky idle
+var idlePaths = [];
 var i = 0; //ducky animation var
 var j = 0; //ducky UPDATE animation var
- //collision detection
 
-//paths
-var idlePaths = [];
+//duck attack vars
 var attackPaths = [];
+var attackAnimations = []; //same as var animations but for attack 
+var a = 0; //called in DRAW
+
+//tub stuff
+var tubObject;
 
 //loofahs
 var pinkLoofah;
 var greenLoofah;
 var purpleLoofah;
 var myLoofahs =[];
-
-//ducky movement/animation vars
-var duckyX = 400;
-var duckyY = 400;
-
-//duck attack vars
-var attackAnimation = [];
-var attack = [];
-var a = 0; //attack animation var
-var b = 0; //attack UPDATE animation var
-var isAttacking = false;
-
-//tub stuff
-var tubObject;
 
 //bubbles
 var myBubbles = [];
@@ -49,15 +45,19 @@ var bubbleSound;
 var backgroundSound;
 var chompSound;
 
+//particles
+const particles = [];
+var p;
+var d;
 
 
 //preload images
 function preload()
 {
+    //paths to txts
     idlePaths = loadStrings("Assets/Ducky Images/idle copy.txt");
     attackPaths = loadStrings("Assets/Ducky Images/attack.txt");
     
-
     //background image
     backgroundTile = loadImage('Assets/Ducky Images/BathroomTile copy.jpg');
 
@@ -115,11 +115,12 @@ function setup()
     }
 
     //attack duck
-    for(var a = 0; a < attackPaths.length; a++)
-    {
-        attackAnimation = new animationImages(attackPaths[a],duckyX,duckyY);
-        attack[a] = attackAnimation;
+    for(var i = 0; i < attackPaths.length; i++)
+    {   
+    myAnimation = new animationImages(attackPaths[i],200,300);
+    attackAnimations[i] = myAnimation;
     }
+    
     //duck shapes
     //myAnimation = new animationImages(duckyFront,duckyX,duckyY);
     //animations[0] = myAnimation;
@@ -138,6 +139,7 @@ function setup()
    
     //how often animations shift
     setInterval(incrementIdleIndex,1000);
+    setInterval(incrementAttackIndex, 1000);
     
 
     //tub shapes
@@ -237,8 +239,6 @@ function draw()
 
     //bubble check collision
 
-
-
     for (var b = 0; b < myBubbles.length; b++) {
         var bubble = myBubbles[b];
 
@@ -255,28 +255,29 @@ function draw()
 
     //console.log("Collision count: " + collisionCount);
 
-   
-
-    
-   
-
     //duck shapes
-    //animations[i].updatePosition(duckyX, duckyY);
+    animations[i].updatePosition(duckyX, duckyY);
     animations[i].drawAnimation();
 
-    if (isAttacking) 
-    {
-        attack[a].updatePosition(duckyX, duckyY);
-        attack[a].drawAnimation();
-        // Increment animation index if necessary
-        a++;
-        if (a >= attack.length) {
-            a = 0;
-        }
-        // Reset flag
-        isAttacking = false;
-    }
+    attackAnimations[a].drawAnimation();
 
+   
+
+    //particles
+    for (let d = 0; d < 5; d++)
+    {
+        let p = new particle();
+        particles.push(p);
+    }
+    for (let d = particles.length - 1; d >= 0; d--)
+    {
+        particles[d].update();
+        particles[d].show();
+        if (particles[d].finished())
+        {
+            particles.splice(d, 1);
+        }
+    }
     
 
 
@@ -321,11 +322,16 @@ function incrementIdleIndex()
     {
         i = 0;
     }
+}
+
+function incrementAttackIndex() //how often ATTACK runs
+{
     a++;
-    if (a >= attack.length)
+    if (a >= attackAnimations.length)
     {
         a = 0;
     }
+   
 }
 
 //move ducky with arrow keys
