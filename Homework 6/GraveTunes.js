@@ -140,6 +140,7 @@ function draw()
 
 
  myCassettesGreen[g].drawImage();
+ 
     
     //ghosts
     image(ghost1,ghost1X,500);
