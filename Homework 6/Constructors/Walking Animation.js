@@ -60,7 +60,7 @@ class animationImage
         //this.currentAnimation.changeAnimation(animationType);
         //drawSprites();
         this.currentAnimation.frameDelay = 5;
-        this.currentAnimation.scale = .5;
+        //this.currentAnimation.scale;
         this.currentAnimation.changeAnimation(animationType);
         if (animationType == 'walk' && this.direction == 'forward') 
         {
@@ -79,6 +79,7 @@ class animationImage
         }
         else 
         {
+            
             this.currentAnimation.velocity.x = 0;
         }
 

@@ -22,7 +22,8 @@ var g = 0;
 var myCassettesGreen = []
 
 //gravestones
-var grave1;
+//var grave1;
+var graveImage;
 var grave2;
 var grave3;
 var grave4;
@@ -73,7 +74,7 @@ function preload()
     ghost3= loadImage('Assets/Ghosts/Ghost Small.png');
 
     //graves
-    grave1= loadImage('Assets/Headstones/classic headstone.png');
+    //grave1= loadImage('Assets/Headstones/classic headstone.png');
     grave2= loadImage('Assets/Headstones/cross headstone.png');
     grave3= loadImage('Assets/Headstones/Crypt.png');
     grave4= loadImage('Assets/Headstones/Three Panel Headstone.png')
@@ -91,10 +92,14 @@ function setup()
     createCanvas(800,800);
 
     console.log(idlePaths.length)
-    myAnimation = new animationImage(400,400,125,219);
+    myAnimation = new animationImage(600,600,125,219);
     myAnimation.loadAnimation('idle', idlePaths);
     myAnimation.loadAnimation('walk', walkPaths);
 
+    graveImage = createSprite(725,530,'static');
+    graveImage.img = "Assets/Headstones/classic headstone.png";
+  
+  
 
     //ghost1 = createSprite(ghost1X,500,75,84);
 
@@ -104,16 +109,16 @@ function setup()
 
     myCassettesGreen[g] = new cassetteShapes(greenCass,400,325,40);
 
-    myGraves1[t] = new graveShapes(grave1,675,475,100);//classic 
+    //myGraves1[t] = new graveShapes(grave1,675,475,100);//classic 
     //graveImage = createSprite(675,475,100,'static');
     //graveImage.img = 'Assets/Headstones/classic headstone.png';
     //graveImage.diameter = 100;
 
-    myGraves2[c] = new graveShapes(grave2,350,1500,100);//cross
-    myGraves3[y] = new graveShapes(grave3,300,425,200);//crypt
-    myGraves4[p] = new graveShapes(grave4,675,265,100);//three panel
-    myGraves5[q] = new graveShapes(grave5,250,230,100);//small top cross
-    myGraves6[w] = new graveShapes(grave6,450,230,100);//small top cross 2
+    //myGraves2[c] = new graveShapes(grave2,350,1500,100);//cross
+    //myGraves3[y] = new graveShapes(grave3,300,425,200);//crypt
+    //myGraves4[p] = new graveShapes(grave4,675,265,100);//three panel
+    //myGraves5[q] = new graveShapes(grave5,250,230,100);//small top cross
+    //myGraves6[w] = new graveShapes(grave6,450,230,100);//small top cross 2
 }
 
 function draw()
@@ -127,20 +132,26 @@ function draw()
     //image(redCass,cassetteXred,cassetteYred);
 
     //graves
-    myGraves1[t].drawImage();
+    //myGraves1[t].drawImage();
     // graves
     //for (var i = 0; i < myGraves1.length; i++) {
         //myGraves1[i].drawImage();
     //}
-    myGraves2[c].drawImage();
-    myGraves3[y].drawImage();
-    myGraves4[p].drawImage();
-    myGraves5[q].drawImage();
-    myGraves6[w].drawImage();
+    //myGraves2[c].drawImage();
+    //myGraves3[y].drawImage();
+   // myGraves4[p].drawImage();
+    //myGraves5[q].drawImage();
+    //myGraves6[w].drawImage();
+    //image(grave1,675,475,100);
+    image(grave2,350,150,100);
+    image(grave3,300,425,200);
+    image(grave4,675,265,100);
+    image(grave5,250,230,100);
+    image(grave6,450,230,100);
 
 
- myCassettesGreen[g].drawImage();
- 
+    myCassettesGreen[g].drawImage();
+
     
     //ghosts
     image(ghost1,ghost1X,500);
@@ -188,21 +199,31 @@ function draw()
     if(kb.pressing('d'))
     {
         myAnimation.updatePosition('forward');
-        myAnimation.drawAnimation('walk');    
+        myAnimation.drawAnimation('walk');  
+        
+        //if(myAnimation.isColliding(grave1))
+        //{
+            //myAnimation.drawAnimation('idle');
+            //myAnimation.updatePosition('idle');
+            
+       //}   
        
     }
     else if(kb.pressing('a'))
     {
         myAnimation.updatePosition('reverse');
-        myAnimation.drawAnimation('walk');        
+        myAnimation.drawAnimation('walk');  
+           
     }
-
    else
     {
+       
         myAnimation.drawAnimation('idle');
     }
-    
 
+    //grave1.debug = mouseIsPressed;
+
+    
 
     
 
