@@ -1,1 +1,4 @@
-Assets/Walking Animation/Main Character Front:idle.png
+Assets/Walking Animation/walk right(1).png
+Assets/Walking Animation/walk right(2).png
+Assets/Walking Animation/walk right(3).png
+Assets/Walking Animation/walk right(2).png

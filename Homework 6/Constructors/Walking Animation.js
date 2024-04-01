@@ -109,7 +109,7 @@ class animationImage
         }
     }
 
-    updatePosition()
+    updatePosition(direction)
     {
         this.direction = direction;
     }

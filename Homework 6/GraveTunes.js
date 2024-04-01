@@ -90,9 +90,11 @@ function setup()
 {
     createCanvas(800,800);
 
+    console.log(idlePaths.length)
     myAnimation = new animationImage(400,400,125,219);
     myAnimation.loadAnimation('idle', idlePaths);
     myAnimation.loadAnimation('walk', walkPaths);
+
 
     //ghost1 = createSprite(ghost1X,500,75,84);
 
@@ -136,6 +138,8 @@ function draw()
     myGraves5[q].drawImage();
     myGraves6[w].drawImage();
 
+
+ myCassettesGreen[g].drawImage();
     
     //ghosts
     image(ghost1,ghost1X,500);
@@ -179,6 +183,7 @@ function draw()
         speedG3 *= -1;
     }
 
+    //movement
     if(kb.pressing('d'))
     {
         myAnimation.updatePosition('forward');
@@ -189,6 +194,11 @@ function draw()
     {
         myAnimation.updatePosition('reverse');
         myAnimation.drawAnimation('walk');        
+    }
+
+   else
+    {
+        myAnimation.drawAnimation('idle');
     }
     
 

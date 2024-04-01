@@ -55,22 +55,22 @@ var d;
 function preload()
 {
     //paths to txts
-    idlePaths = loadStrings("Assets/Ducky Images/idle copy.txt");
-    attackPaths = loadStrings("Assets/Ducky Images/attack.txt");
+    idlePaths = loadStrings("Assets/DuckyImages/idle copy.txt");
+    attackPaths = loadStrings("Assets/DuckyImages/attack.txt");
     
     //background image
-    backgroundTile = loadImage('Assets/Ducky Images/BathroomTile copy.jpg');
+    backgroundTile = loadImage('Assets/DuckyImages/BathroomTile copy.jpg');
 
     // duck animation images
-    duckyFront = loadImage('Assets/Ducky Images/Ducky9696 copy.png');
-    duckySideLeft = loadImage('Assets/Ducky Images/DuckySideLeft copy.png');
-    duckySideRight = loadImage('Assets/Ducky Images/DuckySideRight copy.png')
+    duckyFront = loadImage('Assets/DuckyImages/Ducky9696 copy.png');
+    duckySideLeft = loadImage('Assets/DuckyImages/DuckySideLeft copy.png');
+    duckySideRight = loadImage('Assets/DuckyImages/DuckySideRight copy.png');
 
-    duckyAttack = loadImage('Assets/Ducky Images/Devil Duck.png')
-    duckyAttackFlipped = loadImage('Assets/Ducky Images/Devil Duck Flipped.png')
+    duckyAttack = loadImage('Assets/DuckyImages/Devil Duck.png')
+    duckyAttackFlipped = loadImage('Assets/DuckyImages/Devil Duck Flipped.png')
     
     // loofah images
-    loofahPink = loadImage('Assets/Ducky Images/Loofahs/loofah pink copy.png');
+    loofahPink = loadImage('Assets/DuckyImages/Loofahs/loofah pink copy.png');
     //loofahGreen = loadImage('Assets/Ducky Images/Loofahs/loofah green copy.png');
     //loofahPurple = loadImage('Assets/Ducky Images/Loofahs/loofah purple copy.png')
     
