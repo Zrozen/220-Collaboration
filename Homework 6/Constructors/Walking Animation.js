@@ -7,9 +7,11 @@ class animationImage
         this.y = y;
         this.w = w;
         this.h = h;
+        
         //this.imageObjects = [];
         this.currentAnimation;
         this.createAnimation();
+        this.rotationSpeed;
         //this.loadAnimation();
         //this.i = 0;
         //this.currentFrameCount = 0;
@@ -34,6 +36,8 @@ class animationImage
     createAnimation()
     {
         this.currentAnimation = createSprite(this.x, this.y);
+        
+        
     }
 
     loadAnimation(animationType, fileNames)
@@ -60,6 +64,7 @@ class animationImage
         //this.currentAnimation.changeAnimation(animationType);
         //drawSprites();
         this.currentAnimation.frameDelay = 5;
+        
         //this.currentAnimation.scale;
         this.currentAnimation.changeAnimation(animationType);
         if (animationType == 'walk' && this.direction == 'forward') 
@@ -67,6 +72,7 @@ class animationImage
             this.currentAnimation.direction = 0;
             this.currentAnimation.mirror.x = false;
             this.currentAnimation.speed = 1;
+            this.currentAnimation.rotationSpeed = 0;
 
         }
         else if (animationType == 'walk' && this.direction == 'reverse') 
@@ -75,26 +81,28 @@ class animationImage
             this.currentAnimation.mirror.x = true;
             this.currentAnimation.direction = 180;
             this.currentAnimation.speed = 1;
+            this.currentAnimation.rotationSpeed = 0;
 
+        }
+        else if (animationType == 'walk' && this.direction == 'up')
+        {
+            this.currentAnimation.y += -1;
+            this.currentAnimation.speed = 1;
+            this.currentAnimation.rotationSpeed = 0;
+        }
+        else if (animationType == 'walk' && this.direction == 'down')
+        {
+            this.currentAnimation.y += 1;
+            this.currentAnimation.speed = 1;
+            this.currentAnimation.rotationSpeed = 0;
         }
         else 
         {
             
             this.currentAnimation.velocity.x = 0;
+            this.currentAnimation.rotationSpeed = 0;
         }
 
-        //animation(this.currentAnimation, 300,250);
-        //if (this.i < this.imageObjects.length)
-        //{
-        //image(this.imageObjects[this.i], this.x, this.y);
-        //if (frameCount % 5 === 0) 
-            //{ 
-            //this.i++;
-            //if (this.i >= this.imageObjects.length) 
-                //{
-                //this.i = 0;
-                //}
-            //}
     }
     
 

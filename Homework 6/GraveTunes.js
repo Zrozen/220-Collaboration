@@ -6,62 +6,37 @@ var speed = 1;
 var speedG3 =1;
 
 //cassette vars
-var cassetteXgreen = 400;
-var cassetteYgreen = 325;
-
-var cassetteXred = 250;
-var cassetteYred = 500;
-
-var cassetteXblue = 700;
-var cassetteYblue = 400;
-
-var cassette;
-
-var g = 0;
-
-var myCassettesGreen = []
+var myCassettes = [];
+let collisionCount = 0;
 
 //gravestones
-//var grave1;
 var graveImage;
-var grave2;
-var grave3;
-var grave4;
+var graveImage2;
+var graveImage3;
 
-var t = 0; //grave 1
-var c = 0; //grave 2
-var y = 0; //grave 3
-var p = 0; //grave 4
-var q = 0; //grave 5
-var w = 0; //grave 6
-
-var myGraves1 = []
-//var graveImage;
-var myGraves2 = []
-var myGraves3 = []
-var myGraves4 = []
-var myGraves5 = []
-var myGraves6 = []
 //animations
 var myAnimation;
 var myWalkAnimation;
 var walkPaths = []
 var idlePaths = []
+var attackPaths = []
 
-//temp MC vars
-//var mainSpriteX = 400;
-//var mainSpriteY = 400;
+//particles
+const particles = [];
+var p;
+var m;
+
+
+
 
 function preload()
 {
-    background= loadImage('Assets/backgrounds/background.png');
+    background= loadImage('Assets/backgrounds/GraveyardBackground.jpg');
 
     //animation strings
     walkPaths = loadStrings("Assets/Walking Animation/walkLeft.txt");
     idlePaths = loadStrings("Assets/Walking Animation/idle.txt");
-    
-    //temp stationary character
-    //mainSprite = loadImage("Assets/Walking Animation/Main Character Front:idle.png");
+    attackPaths = loadStrings("Assets/AttackAnimation/Attack.txt");
 
     //cassettes
     greenCass= loadImage('Assets/Boom Box/greenTape.png');
@@ -74,51 +49,45 @@ function preload()
     ghost3= loadImage('Assets/Ghosts/Ghost Small.png');
 
     //graves
-    //grave1= loadImage('Assets/Headstones/classic headstone.png');
-    grave2= loadImage('Assets/Headstones/cross headstone.png');
-    grave3= loadImage('Assets/Headstones/Crypt.png');
-    grave4= loadImage('Assets/Headstones/Three Panel Headstone.png')
-    grave5= loadImage('Assets/Headstones/headstone small cross.png');
-    grave6= loadImage('Assets/Headstones/headstone small cross.png');
+    
 
 
 }
 
-console.log("Walk paths:", walkPaths);
-console.log("Idle paths:", idlePaths);
+//console.log("Walk paths:", walkPaths);
+//console.log("Idle paths:", idlePaths);
 
 function setup()
 {
     createCanvas(800,800);
 
-    console.log(idlePaths.length)
+    //console.log(idlePaths.length)
     myAnimation = new animationImage(600,600,125,219);
     myAnimation.loadAnimation('idle', idlePaths);
     myAnimation.loadAnimation('walk', walkPaths);
+    myAnimation.loadAnimation('attack', attackPaths);
+    myAnimation.rotation = 0;
 
+    //graves
     graveImage = createSprite(725,530,'static');
     graveImage.img = "Assets/Headstones/classic headstone.png";
-  
-  
+    
+    graveImage2 = createSprite(300,300,'static');
+    graveImage2.img = "Assets/Headstones/Crypt.png";
 
-    //ghost1 = createSprite(ghost1X,500,75,84);
+    graveImage3 = createSprite(200,600,'static');
+    graveImage3.img = "Assets/Headstones/cross headstone.png";
 
+    //myCassettes[c]= new cassetteShapes(redCass, 100, 400, 40);
+    //myCassettes.push(new cassetteShapes(redCass, 50, 50, 40));
+    
+    for(var c = 0; c < 5; c++)
+    {
+        myCassettes[c]= new cassetteShapes(random(width), random(height), 40,10);
+        
+    }
 
-    //myAnimation.setAnimation('walk', walkPaths);
-    //myAnimation.setAnimation('idle',idlePaths);
-
-    myCassettesGreen[g] = new cassetteShapes(greenCass,400,325,40);
-
-    //myGraves1[t] = new graveShapes(grave1,675,475,100);//classic 
-    //graveImage = createSprite(675,475,100,'static');
-    //graveImage.img = 'Assets/Headstones/classic headstone.png';
-    //graveImage.diameter = 100;
-
-    //myGraves2[c] = new graveShapes(grave2,350,1500,100);//cross
-    //myGraves3[y] = new graveShapes(grave3,300,425,200);//crypt
-    //myGraves4[p] = new graveShapes(grave4,675,265,100);//three panel
-    //myGraves5[q] = new graveShapes(grave5,250,230,100);//small top cross
-    //myGraves6[w] = new graveShapes(grave6,450,230,100);//small top cross 2
+    
 }
 
 function draw()
@@ -127,34 +96,12 @@ function draw()
     image(background,0,0);
 
     //cassettes
-    //image(greenCass,cassetteXgreen,cassetteYgreen);
-    //image(blueCass,cassetteXblue,cassetteYblue);
-    //image(redCass,cassetteXred,cassetteYred);
-
-    //graves
-    //myGraves1[t].drawImage();
-    // graves
-    //for (var i = 0; i < myGraves1.length; i++) {
-        //myGraves1[i].drawImage();
-    //}
-    //myGraves2[c].drawImage();
-    //myGraves3[y].drawImage();
-   // myGraves4[p].drawImage();
-    //myGraves5[q].drawImage();
-    //myGraves6[w].drawImage();
-    //image(grave1,675,475,100);
-    image(grave2,350,150,100);
-    image(grave3,300,425,200);
-    image(grave4,675,265,100);
-    image(grave5,250,230,100);
-    image(grave6,450,230,100);
-
-
-    myCassettesGreen[g].drawImage();
+    //myCassettes[c].drawImage();
 
     
     //ghosts
     image(ghost1,ghost1X,500);
+
     //lil guy by boombox movement
     ghost1X +=speed;
 
@@ -195,18 +142,64 @@ function draw()
         speedG3 *= -1;
     }
 
+    //particles
+    for (let m = 0; m < 5; m++) 
+    {
+        let p = new particle();
+        particles.push(p);
+    }
+      for (let m = particles.length - 1; m >= 0; m--) 
+    {
+        particles[m].update();
+        particles[m].show();
+
+        if (particles[m].finished())
+        {
+          // remove this particle
+          particles.splice(m, 1);
+        }
+    }
+
+
+    //cassettes
+    //myCassettes[c].drawImage();
+    for(var c = 0; c < myCassettes.length; c++)
+    {
+        myCassettes[c].updatePositionRandomly();
+        myCassettes[c].drawImage();
+    }
+
+    
+    for (var s = 0; s < myCassettes.length; s++) 
+    {
+        var cassette = myCassettes[s];
+
+        if(myAnimation.x < cassette.x + myAnimation.w &&
+            myAnimation.x + 96 > cassette.x &&
+            myAnimation.y < cassette.y + cassette.w &&
+            myAnimation.y + 96 > cassette.y)
+            {
+                
+                collisionCount--;
+                myCassettes.splice(s,1);
+               
+                
+            }
+            
+    }
+            
     //movement
     if(kb.pressing('d'))
     {
         myAnimation.updatePosition('forward');
         myAnimation.drawAnimation('walk');  
         
-        //if(myAnimation.isColliding(grave1))
-        //{
-            //myAnimation.drawAnimation('idle');
-            //myAnimation.updatePosition('idle');
-            
-       //}   
+        
+        if(myAnimation.isColliding(graveImage,graveImage2,graveImage3))
+        {
+            myAnimation.drawAnimation('idle');
+            myAnimation.updatePosition('idle');
+        }   
        
     }
     else if(kb.pressing('a'))
@@ -215,26 +208,36 @@ function draw()
         myAnimation.drawAnimation('walk');  
            
     }
+    else if(kb.pressing('w'))
+    {
+        myAnimation.updatePosition('up');
+        myAnimation.drawAnimation('walk');
+    }
+    else if(kb.pressing('s'))
+    {
+        myAnimation.updatePosition('down');
+        myAnimation.drawAnimation('walk');
+    }
+    else if (kb.pressing('x')) 
+    {
+        myAnimation.drawAnimation('attack');
+        if (graveImage != null)
+        {
+        if (dist(myAnimation.getCurrentAnimation().position.x, myAnimation.getCurrentAnimation().position.y, graveImage.position.x, graveImage.position.y) < 200) 
+        {
+            console.log("destroy");
+            graveImage.remove();
+            graveImage = null;
+        }
+        }
+    }
    else
     {
-       
         myAnimation.drawAnimation('idle');
     }
 
-    //grave1.debug = mouseIsPressed;
+    graveImage3.debug = mouseIsPressed;
 
-    
-
-    
-
-     //temp main character
-     //image(mainSprite,mainSpriteX,mainSpriteY);
-
-     
-    
-
-    
-    
 
 }
 
