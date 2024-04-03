@@ -1,9 +1,9 @@
 class particle
 {
-    constructor()
+    constructor(x,y)
     {
-        this.x = 300;
-        this.y = 500;
+        this.x = x;
+        this.y = y;
         this.vx = random(-1, 1);
         this.vy = random(-5, -1);
         this.alpha = 255; 

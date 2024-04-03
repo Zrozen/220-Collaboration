@@ -14,6 +14,8 @@ var graveImage;
 var graveImage2;
 var graveImage3;
 
+var health = 100;
+
 //animations
 var myAnimation;
 var myWalkAnimation;
@@ -145,7 +147,7 @@ function draw()
     //particles
     for (let m = 0; m < 5; m++) 
     {
-        let p = new particle();
+        let p = new particle(x,y);
         particles.push(p);
     }
       for (let m = particles.length - 1; m >= 0; m--) 
@@ -223,12 +225,16 @@ function draw()
         myAnimation.drawAnimation('attack');
         if (graveImage != null)
         {
-        if (dist(myAnimation.getCurrentAnimation().position.x, myAnimation.getCurrentAnimation().position.y, graveImage.position.x, graveImage.position.y) < 200) 
-        {
+            if (dist(myAnimation.getCurrentAnimation().position.x, myAnimation.getCurrentAnimation().position.y, graveImage.position.x, graveImage.position.y) < 200) 
+            {
             console.log("destroy");
-            graveImage.remove();
-            graveImage = null;
-        }
+            createParticles(graveImage.position.x, graveImage.position.y);
+            health -= 1;
+                if(health <= 0)
+                {graveImage.remove();
+                graveImage = null;
+                }
+            }
         }
     }
    else

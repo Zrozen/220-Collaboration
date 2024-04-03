@@ -125,7 +125,13 @@ class animationImage
 
     isColliding(myImage)
     {
+        console.log("Checking collision with:", myImage);
         return this.currentAnimation.collide(myImage);
+    }
+
+    getCurrentAnimation() 
+    {
+        return this.currentAnimation;
     }
 
     
