@@ -145,6 +145,8 @@ function draw()
     }
 
     //particles
+    function createParticles(x,y)
+    {
     for (let m = 0; m < 5; m++) 
     {
         let p = new particle(x,y);
@@ -161,6 +163,7 @@ function draw()
           particles.splice(m, 1);
         }
     }
+}
 
 
     //cassettes
@@ -227,11 +230,13 @@ function draw()
         {
             if (dist(myAnimation.getCurrentAnimation().position.x, myAnimation.getCurrentAnimation().position.y, graveImage.position.x, graveImage.position.y) < 200) 
             {
-            console.log("destroy");
             createParticles(graveImage.position.x, graveImage.position.y);
+            //console.log("destroy");
             health -= 1;
+                
                 if(health <= 0)
-                {graveImage.remove();
+                {
+                graveImage.remove();
                 graveImage = null;
                 }
             }
