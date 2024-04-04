@@ -241,6 +241,36 @@ function draw()
                 }
             }
         }
+        if (graveImage2 != null)
+        {
+            if (dist(myAnimation.getCurrentAnimation().position.x, myAnimation.getCurrentAnimation().position.y, graveImage2.position.x, graveImage2.position.y) < 200) 
+            {
+            createParticles(graveImage2.position.x, graveImage2.position.y);
+            //console.log("destroy");
+            health -= 1;
+                
+                if(health <= 0)
+                {
+                graveImage2.remove();
+                graveImage2 = null;
+                }
+            }
+        }
+        if (graveImage3 != null)
+        {
+            if (dist(myAnimation.getCurrentAnimation().position.x, myAnimation.getCurrentAnimation().position.y, graveImage3.position.x, graveImage3.position.y) < 200) 
+            {
+            createParticles(graveImage3.position.x, graveImage3.position.y);
+            //console.log("destroy");
+            health -= 1;
+                
+                if(health <= 0)
+                {
+                graveImage3.remove();
+                graveImage3 = null;
+                }
+            }
+        }
     }
    else
     {
