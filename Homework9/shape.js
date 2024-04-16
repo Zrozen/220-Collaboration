@@ -18,35 +18,31 @@ if (this.shapeType == "box")
 {
 rotateX(frameCount * 0.01);
 rotateY(frameCount * 0.01);
-//rotateZ(frameCount * 0.05);
 translate(this.positionX,this.positionY);
 texture(this.texture);
 box(this.x,this.y,this.z);
 }
 else if (this.shapeType == "box2")
 {
-rotateX(frameCount * 0.01);
-rotateY(frameCount * 0.01);
-//rotateZ(frameCount * 0.05);
+rotateX(frameCount * 0.02);
+rotateY(frameCount * 0.02);
 translate(this.positionX,this.positionY);
 texture(this.texture);
 box(this.x,this.y,this.z);
 }
 else if (this.shapeType == "box3")
 {
-    rotateX(frameCount * 0.01);
-    rotateY(frameCount * 0.01);
-    //rotateZ(frameCount * 0.05);
     translate(this.positionX,this.positionY);
+    rotateX(frameCount * 0.03);
+    rotateY(frameCount * 0.03);
     texture(this.texture);
     box(this.x,this.y,this.z);
 }
 else if(this.shapeType == "box4")
 {
-    rotateX(frameCount * 0.01);
-    rotateY(frameCount * 0.01);
-    //rotateZ(frameCount * 0.05);
     translate(this.positionX,this.positionY);
+    rotateX(frameCount * 0.04);
+    rotateY(frameCount * 0.04);
     texture(this.texture);
     box(this.x,this.y,this.z);
 }
