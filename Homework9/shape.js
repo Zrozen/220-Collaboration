@@ -1,6 +1,6 @@
 class shape
 {
-constructor(shapeType,x,y,z,positionX,positionY)
+constructor(shapeType,texture,x,y,z,positionX,positionY)
 {
     this.shapeType = shapeType;
     this.x = x;
@@ -8,6 +8,7 @@ constructor(shapeType,x,y,z,positionX,positionY)
     this.z = z; 
     this.positionX = positionX;
     this.positionY = positionY; 
+    this.texture = texture;
 
 }
 
@@ -19,6 +20,7 @@ rotateX(frameCount * 0.01);
 rotateY(frameCount * 0.01);
 //rotateZ(frameCount * 0.05);
 translate(this.positionX,this.positionY);
+texture(this.texture);
 box(this.x,this.y,this.z);
 }
 else if (this.shapeType == "box2")
@@ -27,6 +29,7 @@ rotateX(frameCount * 0.01);
 rotateY(frameCount * 0.01);
 //rotateZ(frameCount * 0.05);
 translate(this.positionX,this.positionY);
+texture(this.texture);
 box(this.x,this.y,this.z);
 }
 else if (this.shapeType == "box3")
@@ -35,6 +38,7 @@ else if (this.shapeType == "box3")
     rotateY(frameCount * 0.01);
     //rotateZ(frameCount * 0.05);
     translate(this.positionX,this.positionY);
+    texture(this.texture);
     box(this.x,this.y,this.z);
 }
 else if(this.shapeType == "box4")
@@ -43,11 +47,9 @@ else if(this.shapeType == "box4")
     rotateY(frameCount * 0.01);
     //rotateZ(frameCount * 0.05);
     translate(this.positionX,this.positionY);
+    texture(this.texture);
     box(this.x,this.y,this.z);
 }
 }
-
-
-
 
 }
