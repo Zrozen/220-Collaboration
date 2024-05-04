@@ -1,0 +1,4 @@
+Assets/NonnaSprites/NonnaFrontFacing.png
+Assets/NonnaSprites/NonnaSideProfile.png
+Assets/NonnaSprites/NonnaSideProfile.png
+Assets/NonnaSprites/NonnaFrontFacing.png
