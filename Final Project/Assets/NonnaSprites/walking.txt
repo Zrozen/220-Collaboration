@@ -1,0 +1,5 @@
+Assets/NonnaSprites/NonnaSideProfile.png
+Assets/NonnaSprites/NonnaStep1.png
+Assets/NonnaSprites/NonnaStep2.png
+Assets/NonnaSprites/NonnaStep3.png
+Assets/NonnaSprites/NonnaStep4.png

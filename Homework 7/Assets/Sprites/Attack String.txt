@@ -1,0 +1,6 @@
+Assets/Sprites/Attack_000.png
+Assets/Sprites/Attack_002.png
+Assets/Sprites/Attack_004.png
+Assets/Sprites/Attack_006.png
+Assets/Sprites/Attack_008.png
+

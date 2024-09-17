@@ -1,0 +1,5 @@
+Assets/Sprites/Idle_000.png
+Assets/Sprites/Idle_002.png
+Assets/Sprites/Idle_004.png
+Assets/Sprites/Idle_006.png
+Assets/Sprites/Idle_008.png

@@ -1,0 +1,4 @@
+Assets/Walking Animation/idleImg(1).png
+Assets/Walking Animation/idleImg(2).png
+Assets/Walking Animation/idleImg(1).png
+Assets/Walking Animation/idleImg(2).png

@@ -1,0 +1,6 @@
+Assets/DuckyImages/Devil Duck flipped.png
+Assets/DuckyImages/Devil Duck.png
+Assets/DuckyImages/Devil Duck flipped.png
+Assets/DuckyImages/Devil Duck.png
+Assets/DuckyImages/Devil Duck flipped.png
+Assets/DuckyImages/Devil Duck.png
